@@ -1,11 +1,12 @@
 import React from 'react';
 
-interface Form {
+interface IForm {
     children: React.ReactNode;
+    onSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
 }
 
-const Form: React.FC<Form> = ({ children }: Form) => {
-    return <form>{children}</form>;
+const Form: React.FC<IForm> = ({ children, onSubmit }: IForm) => {
+    return <form onSubmit={onSubmit}>{children}</form>;
 };
 
 export default Form;

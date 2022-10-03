@@ -4,8 +4,8 @@ import { Button as ChakraButton } from '@chakra-ui/react';
 const buttonTypes = ['submit', 'button', 'reset'] as const;
 
 interface IButton {
-    onClick: any;
     type?: typeof buttonTypes[number];
+    onClick?: any;
     children: React.ReactNode;
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useFormik } from 'formik';
 
 import Form from '../Form';
 import TextInput from '../fields/TextInput';
@@ -6,12 +7,18 @@ import customFetch from '../../helpers/customFetch';
 import Button from '../Button';
 
 const SignUpForm: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const handleSignUp = async (evt: React.FormEvent) => {
-        console.log(email, password, confirmPassword);
-        evt.preventDefault();
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+            confirmPassword: '',
+        },
+        onSubmit: values => handleSignUp(values),
+    });
+
+    const handleSignUp = async (values: any) => {
+        const { email, password } = values;
+        // console.log(email, password, confirmPassword);
         const res = await customFetch({
             url: 'http://localhost:3000/auth/email/sign_up',
             method: 'POST',
@@ -23,30 +30,32 @@ const SignUpForm: React.FC = () => {
         });
         console.log(res);
     };
+
     // handle case for organization owner or member
     return (
-        <Form>
+        <Form onSubmit={formik.handleSubmit}>
             <TextInput
                 type="email"
+                name="email"
                 label="Email"
-                value={email}
-                onChange={(evt: any) => setEmail(evt.target.value)}
+                value={formik.values.email}
+                onChange={formik.handleChange}
             />
             <TextInput
                 type="password"
+                name="password"
                 label="Password"
-                value={password}
-                onChange={(evt: any) => setPassword(evt.target.value)}
+                value={formik.values.password}
+                onChange={formik.handleChange}
             />
             <TextInput
                 type="password"
+                name="confirmPassword"
                 label="Confirm Password"
-                value={confirmPassword}
-                onChange={(evt: any) => setConfirmPassword(evt.target.value)}
+                value={formik.values.confirmPassword}
+                onChange={formik.handleChange}
             />
-            <Button type="submit" onClick={handleSignUp}>
-                Submit
-            </Button>
+            <Button type="submit">Submit</Button>
         </Form>
     );
 };

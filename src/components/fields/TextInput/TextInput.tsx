@@ -5,6 +5,7 @@ const inputTypes = ['email', 'text', 'textarea', 'password'] as const;
 
 interface ITextInput {
     type: typeof inputTypes[number];
+    name: string;
     value: string;
     onChange: any;
     label?: string;
@@ -13,6 +14,7 @@ interface ITextInput {
 
 const TextInput: React.FC<ITextInput> = ({
     type,
+    name,
     label,
     helperText,
     value,
@@ -21,7 +23,7 @@ const TextInput: React.FC<ITextInput> = ({
     return (
         <FormControl>
             {label && <FormLabel>{label}</FormLabel>}
-            <Input type={type} value={value} onChange={onChange} />
+            <Input type={type} value={value} onChange={onChange} name={name} />
             {helperText && <FormHelperText>{helperText}</FormHelperText>}
         </FormControl>
     );
