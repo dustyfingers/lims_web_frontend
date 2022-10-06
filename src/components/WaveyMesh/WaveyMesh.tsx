@@ -10,8 +10,8 @@ const vertexShader = `
     void main() {
         vec4 modelPos = modelMatrix * vec4(position, 1.0);
 
-        modelPos.y += sin(modelPos.x * 5.0 + u_time * 3.0) * 0.1;
-        modelPos.y += sin(modelPos.z * 5.0 + u_time * 3.0) * 0.1;
+        modelPos.y += sin(modelPos.x * 3.3 + u_time * 0.9145975) * 0.2;
+        modelPos.y += sin(modelPos.z * 5.0 + u_time * 0.725) * 0.2;
 
         vZVal = modelPos.y;
 
@@ -55,7 +55,7 @@ const WaveyMesh: React.FC = () => {
     });
     return (
         <mesh ref={mesh} position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={1.5}>
-            <planeGeometry args={[10, 10, 1028, 1028]} />
+            <planeGeometry args={[100, 100, 1024, 1024]} />
             <shaderMaterial
                 fragmentShader={fragmentShader}
                 vertexShader={vertexShader}

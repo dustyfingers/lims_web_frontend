@@ -1,6 +1,26 @@
-.LandingGraphic {
-    canvas {
+.LandingGraphicContainer {
+    position: relative;
+    height: 400px;
+    .LandingGraphic {
+        z-index: -100;
+        canvas {
+            width: 100vw;
+            height: 100%;
+        }
+    }
+
+    .LandingGraphicOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: radial-gradient(
+            farthest-corner at -100px 80px,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) 40%,
+            rgba(255, 255, 255, 255)
+        );
+        z-index: -99;
         width: 100vw;
-        height: 500px;
+        height: 100%;
     }
 }

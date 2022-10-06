@@ -1,19 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { VStack, StackDivider } from '@chakra-ui/react';
 
+import content from '../../content/landing.json';
+
+import TopNav from '../../components/TopNav';
 import LandingHero from '../../blocks/LandingHero';
+import TextBlock from '../../blocks/Text';
+import BenefitBlock from '../../blocks/Benefit';
 
 const Landing: React.FC = () => {
     return (
-        <div>
+        <>
+            <TopNav />
             <LandingHero />
-            <Link to="/sign_up">
-                <button>Sign Up</button>
-            </Link>
-            <Link to="/log_in">
-                <button>Log In</button>
-            </Link>
-        </div>
+            <TextBlock lead={content.spiderLIMSAbout.lead} />
+            <VStack divider={<StackDivider borderColor={'gray.200'} />}>
+                {content.benefits.map(benefit => (
+                    <BenefitBlock name={benefit.name} />
+                ))}
+            </VStack>
+        </>
     );
 };
 

@@ -1,0 +1,19 @@
+{
+    "spiderLIMSAbout": {
+        "lead": "SpiderLIMS is a cloud-based Laboratory Information Management System. Et velit velit aute duis cupidatat incididunt excepteur cillum esse mollit veniam eiusmod incididunt consequat. Dolore tempor magna dolore mollit veniam veniam anim fugiat voluptate ea quis est ea."
+    },
+    "benefits": [
+        {
+            "name": "scalability"
+        },
+        {
+            "name": "accessibility"
+        },
+        {
+            "name": "reliability"
+        },
+        {
+            "name": "security"
+        }
+    ]
+}
